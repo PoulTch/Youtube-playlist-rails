@@ -1,0 +1,49 @@
+<header class="playlist-header">
+  <h1 class="playlist-title"><%= @playlist.title %></h1>
+  
+  <div class="playlist-actions">
+    <%= button_to "Refresh Playlist", refresh_playlist_path(@playlist), 
+        method: :post,
+        class: "primary",
+        form: { data: { action: "submit->playlist#disableButton" } } %>
+  </div>
+</header>
+
+<% if @videos.any? %>
+<div id="playlist-container" style="display: flex;" data-controller="playlist">
+  <!-- ... (весь твой старый код для плеера и списка видео остается ЗДЕСЬ) ... -->
+  <!-- Левая колонка: Плеер и дата -->
+  <div style="flex: 3; margin-right: 20px;">
+    <div class="video-container">
+      <div id="video-player" data-playlist-target="player"></div>
+    </div>
+    <div class="video-meta">
+      <p>
+        Published on: <span data-playlist-target="publishedAt"></span>
+      </p>
+      <%= link_to "Назад к списку плейлистов", playlists_path %>
+    </div>
+  </div>
+
+  <!-- Правая колонка: Список видео -->
+  <div id="video-list" style="flex: 1; overflow-y: auto;">
+    <% @videos.each do |video| %>
+    <div class="video-item" 
+    data-action="click->playlist#selectVideo"
+    data-playlist-target="videoItem" 
+    data-video-id="<%= video.youtube_id %>" 
+    data-published-at="<%= video.published_at&.strftime('%B %d, %Y') %>" 
+    style="display: flex; align-items: center; margin-bottom: 10px; cursor: pointer;">
+    <img src="<%= video.thumbnail_url %>" width="120" style="margin-right: 10px;">
+    <span><%= video.title %></span>
+  </div>
+  <% end %>
+</div>
+</div>
+<% else %>
+<div class="no-videos-message" style="margin-top: 20px;">
+  <p>Плейлист пуст или видео еще не импортированы. Нажмите "Refresh Playlist", чтобы загрузить видео.</p>
+</div>
+<% end %>
+
+<br>

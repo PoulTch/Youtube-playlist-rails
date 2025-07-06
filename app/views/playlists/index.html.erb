@@ -1,0 +1,20 @@
+<h1>Мои плейлисты</h1>
+
+<div id="playlists">
+  <% @playlists.each do |playlist| %>
+<div class="playlist-row">
+  <span class="playlist-title">
+    <%= link_to playlist.title, playlist %>
+  </span>
+  <span class="playlist-actions">
+    <%= button_to "Удалить", playlist, 
+        method: :delete, 
+        class: "secondary outline",  # адаптивный класс от Pico.css 
+        data: { "turbo-confirm": "Вы уверены, что хотите удалить плейлист '#{playlist.title}'?" } %>
+  </span>
+</div>
+    <hr>
+  <% end %>
+</div>
+
+<%= link_to "Добавить новый плейлист", new_playlist_path %>

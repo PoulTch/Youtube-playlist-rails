@@ -1,0 +1,27 @@
+<%= form_with(model: playlist) do |form| %>
+<% if playlist.errors.any? %>
+<div style="color: red">
+  <h2><%= pluralize(playlist.errors.count, "error") %> prohibited this playlist from being saved:</h2>
+  <ul>
+    <% playlist.errors.each do |error| %>
+    <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div>
+  <%= form.label :title, "Название плейлиста" %><br>
+  <%= form.text_field :title %>
+</div>
+
+<div>
+  <%= form.label :youtube_id, "Ссылка на плейлист с YouTube" %><br>
+  <%= form.text_field :youtube_id, placeholder: "Например, https://www.youtube.com/playlist?list=..." %>
+  <small>Можно вставить полную ссылку или только ID плейлиста.</small>
+</div>
+
+<div>
+  <%= form.submit "Сохранить плейлист" %>
+</div>
+<% end %>

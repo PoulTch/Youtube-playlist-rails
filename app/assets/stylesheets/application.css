@@ -1,0 +1,126 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+
+.video-item.is-active {
+  background-color: #e0e0e0; /* Светло-серый фон */
+  border-left: 3px solid #007bff; /* Синяя полоска слева */
+}
+
+.video-container {
+  position: relative;
+  padding-top: 56.25%; /* Соотношение сторон 16:9 (9 / 16 = 0.5625) */
+  height: 0;
+  overflow: hidden;
+  background-color: #000; /* Черный фон на время загрузки */
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Синхронизируем высоту списка видео и плеера */
+#playlist-container {
+  /* Мы уже используем flex, это хорошо.
+     Добавим align-items, чтобы выровнять начало плеера и списка */
+  align-items: flex-start;
+}
+
+#video-list {
+  /* Устанавливаем высоту, равную высоте видеоплеера.
+     56.25vw - это 56.25% от ширины ОКНА ПРОСМОТРА (viewport width).
+     Это будет хорошо работать на большинстве экранов.
+     Подбираем значение, чтобы оно соответствовало нашим flex-пропорциям. 
+     У нас левая колонка flex: 3, правая flex: 1. Значит, левая занимает 75% ширины.
+     Высота плеера = 0.5625 * 75vw = 42.1875vw. Округлим до 42vw. */
+  max-height: 42vw; 
+  /* vw - это "viewport width". 1vw = 1% от ширины окна браузера. */
+}
+
+/* Стили для элементов в списке видео */
+.video-item span {
+  font-size: 0.85rem; /* rem - это размер относительно базового шрифта. 1rem = базовый, 0.85rem ~ на 15% меньше */
+  line-height: 1.2; /* Уменьшим межстрочный интервал для компактности */
+}
+
+/* Стили для строки плейлиста на главной странице */
+.playlist-row {
+  display: flex; /* Включаем Flexbox */
+  justify-content: space-between; /* Распределяем элементы по краям */
+  align-items: center; /* Выравниваем по центру по вертикали */
+  padding: 0.5rem 0; /* Добавим немного вертикальных отступов */
+}
+
+.playlist-title {
+  font-size: 1.1rem; /* Сделаем название чуть крупнее */
+  font-weight: bold;
+}
+
+.playlist-actions {
+  display: flex; /* Делаем контейнер для кнопок flex-ом */
+  gap: 0.5rem;   /* Добавляем небольшой зазор между кнопками */
+}
+
+.playlist-actions form {
+  margin-bottom: 0;
+}
+
+.playlist-actions button {
+  min-width: 100px; /* Можно сделать чуть поменьше */
+  margin: 0;
+}
+
+
+
+/* Стили для блока под плеером (дата и ссылка "Назад") */
+.video-meta {
+  display: flex;
+  justify-content: space-between; /* Распределяем по краям */
+  align-items: center;
+  margin-top: 1rem; /* Небольшой отступ сверху */
+  color: var(--pico-secondary-color); /* Используем цвет из палитры Pico */
+  font-style: italic;
+}
+
+.video-meta p {
+  margin: 0; /* Убираем стандартный отступ у параграфа */
+}
+
+/* Стили для шапки на странице просмотра плейлиста */
+.playlist-header {
+  display: flex; /* Включаем Flexbox! */
+  justify-content: space-between; /* Распределяем элементы по краям */
+  align-items: center; /* Выравниваем по центру по вертикали */
+  margin-bottom: 1.5rem; /* Добавим отступ снизу, чтобы отделить от плеера */
+}
+
+/* Стили для заголовка внутри этой шапки */
+.playlist-header .playlist-title {
+  margin-bottom: 0; /* Убираем стандартный нижний отступ у h1, чтобы выравнивание было идеальным */
+}
+
+/* Стили для контейнера с кнопкой (и самой кнопки) */
+.playlist-header .playlist-actions form {
+  margin-bottom: 0; /* Убираем отступ у формы от button_to */
+}
+
+.playlist-header .playlist-actions button {
+  /* Задаем фиксированную или минимальную ширину, чтобы кнопка не была слишком длинной */
+  min-width: 180px; 
+}
