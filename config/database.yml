@@ -2,19 +2,19 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: postgres
-  password: <%= ENV.fetch("POSTGRES_PASSWORD") %>
 
 development:
   <<: *default
   database: youtube_playlist_v1d_development
+  username: postgres
+  password: <%= ENV.fetch("POSTGRES_PASSWORD", "postgres") %>
 
 test:
   <<: *default
   database: youtube_playlist_v1d_test
+  username: postgres
+  password: <%= ENV.fetch("POSTGRES_PASSWORD", "postgres") %>
 
 production:
   <<: *default
-  database: youtube_playlist_v1d_production
-  username: youtube_playlist_v1d
-  password: <%= ENV["YOUTUBE_PLAYLIST_V1D_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
