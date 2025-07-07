@@ -1,0 +1,18 @@
+# Эта секция будет использоваться локально, при запуске `rails s`
+development:
+  execution_mode: inline
+
+# Эта секция для тестов
+test:
+  execution_mode: inline
+
+# ЭТА СЕКЦИЯ — САМАЯ ВАЖНАЯ. Она будет использоваться на Render.com
+production:
+  # Говорит, что задачи должен выполнять отдельный процесс (наш Background Worker)
+  execution_mode: external
+
+  # Остальные настройки для производительности
+  max_threads: 5
+  poll_interval: 10
+  queues: '*'
+  shutdown_timeout: 60
