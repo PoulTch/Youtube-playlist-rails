@@ -104,6 +104,9 @@ GEM
       irb (~> 1.10)
       reline (>= 0.3.8)
     dotenv (3.1.8)
+    dotenv-rails (3.1.8)
+      dotenv (= 3.1.8)
+      railties (>= 6.1)
     drb (2.2.3)
     ed25519 (1.4.0)
     erb (5.0.1)
@@ -361,6 +364,7 @@ DEPENDENCIES
   brakeman
   capybara
   debug
+  dotenv-rails (~> 3.1)
   good_job (~> 4.11)
   httparty
   importmap-rails
