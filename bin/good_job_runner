@@ -1,0 +1,10 @@
+# Загружаем окружение Rails
+require_relative '../config/environment'
+
+# Создаем экземпляр исполнителя, передавая ему все очереди
+# Это то, что делает `bundle exec goodjob` по умолчанию
+executor = GoodJob::Executor.new(GoodJob::Queue.all)
+
+# Запускаем бесконечный цикл исполнителя
+# Это полностью имитирует поведение воркера
+executor.run_all_inline_and_block
