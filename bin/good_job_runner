@@ -4,10 +4,10 @@
 # Загружаем окружение Rails
 require_relative '../config/environment'
 
-# Создаем экземпляр исполнителя, передавая ему все очереди
-executor = GoodJob::Executor.new(GoodJob::Queue.all)
+# Создаем экземпляр CLI, который управляет воркером
+cli = GoodJob::CLI.new
 
-puts "GoodJob worker started successfully via custom runner."
+puts "GoodJob worker starting via custom runner..."
 
-# Запускаем бесконечный цикл исполнителя
-executor.run_all_inline_and_block
+# Запускаем воркер
+cli.start
