@@ -1,2 +1,5 @@
 [nix]
-pkgs = ["postgresql", "libpq"]
+pkgs = [
+    "pkgs.postgresql.lib",
+    "pkgs.postgresql.dev"
+]
