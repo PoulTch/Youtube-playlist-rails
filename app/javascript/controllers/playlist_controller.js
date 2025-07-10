@@ -65,7 +65,7 @@ export default class extends Controller {
     this.player = new this.YT.Player(this.playerTarget, {
       // height и width УБРАНЫ, теперь они управляются через CSS
       videoId: initialVideoId,
-      playerVars: { 'playsinline': 1 },
+      playerVars: { 'playsinline': 1, 'origin': window.location.origin },
       events: {
         'onReady': (event) => this.onPlayerReady(event, savedTime, initialVideoPublishedAt),
         'onStateChange': (event) => this.onPlayerStateChange(event)
