@@ -59,6 +59,6 @@ end
 
 gem "good_job", "~> 4.11"
 
-gem "pg", "~> 1.5"
+gem "pg", "~> 1.6"
 
 gem "dotenv-rails", "~> 3.1"
