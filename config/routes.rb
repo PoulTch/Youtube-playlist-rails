@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  # Health check для Railway
+  get "/up", to: "rails/health#show", as: :rails_health_check
+
   # Эта строка подключает веб-интерфейс (дашборд) GoodJob по адресу /goodjob
   mount GoodJob::Engine => 'goodjob'
 
