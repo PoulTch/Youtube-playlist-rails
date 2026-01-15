@@ -57,7 +57,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "good_job", "~> 4.11"
+gem "good_job", "~> 4.12"
 
 gem "solid_queue"
 
